@@ -1,15 +1,12 @@
-version: 1
-
 indices:
-  en: &base-site
+  english: &default
     include:
-      - '/**'
+      - /**
     exclude:
-      - '/*.json'
-      - '/**/*.json'
+      - /en/snippets/**
     target: /query-index.json
     properties:
       title:
-        select: head > meta[property="og:title"]
+        select: main h1:first-of-type
         value: |
-          attribute(el, 'content')
+          textContent(el)
